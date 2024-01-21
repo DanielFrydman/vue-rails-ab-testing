@@ -12,7 +12,9 @@ const app = createApp(App)
 app.mixin({
   beforeCreate() {
     this.$cmsClient = HygraphClient;
-    this.$apiClient = ApiClient;
+    this.$apiClient = ApiClient();
+    this.$trackPageview = trackPageview;
+    this.$trackEvent = trackEvent;
   },
 });
 app.use(Router)
