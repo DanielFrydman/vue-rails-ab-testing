@@ -75,7 +75,7 @@ export default {
             }
           }
         `
-        const data = await this.$hygraph.request(query);
+        const data = await this.$cmsClient.request(query);
         this.setTextVariation(data.abTestingVariations[0]);
       } catch (e) {
         this.error = `Error trying to fetch data: ${e}. Please, try again later.`;

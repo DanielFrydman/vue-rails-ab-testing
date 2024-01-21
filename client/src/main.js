@@ -11,7 +11,7 @@ import "./style.css";
 const app = createApp(App)
 app.mixin({
   beforeCreate() {
-    this.$hygraph = HygraphClient;
+    this.$cmsClient = HygraphClient;
     this.$apiClient = ApiClient;
   },
 });
