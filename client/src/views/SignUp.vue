@@ -30,18 +30,6 @@
         >
           Login to your account
         </p>
-        <p
-          tabindex="0"
-          class="focus:outline-none text-sm mt-4 font-medium leading-none text-gray-500"
-        >
-          Dont have account?
-          <a
-            href="javascript:void(0)"
-            class="hover:text-gray-500 focus:text-gray-500 focus:outline-none focus:underline hover:underline text-sm font-medium leading-none text-gray-800 cursor-pointer"
-          >
-            Sign up here</a
-          >
-        </p>
         <button
           aria-label="Continue with google"
           role="button"
@@ -124,6 +112,13 @@
           <p class="text-base font-medium leading-4 px-2.5 text-gray-500">OR</p>
           <hr class="w-full bg-gray-400" />
         </div>
+        <p
+          tabindex="0"
+          class="focus:outline-none text-sm mt-4 font-medium leading-none text-gray-500"
+          style="margin-top: -10px; margin-bottom: 10px;"
+        >
+          Dont have account?
+        </p>
         <div>
           <label
             for="email"
@@ -195,7 +190,7 @@
           <button
             role="button"
             class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-indigo-700 border rounded hover:bg-indigo-600 py-4 w-full"
-            style="background-color: #38DC81; color: #09314B;"
+            style="background-color: #38dc81; color: #09314b"
           >
             Create my account
           </button>
@@ -203,10 +198,7 @@
       </div>
       <div class="xl:w-1/3 md:w-1/2 lg:ml-16 ml-8 md:mt-0 mt-6">
         <div class="pl-8 md:block hidden">
-          <img
-            src="../assets/blinkist.png"
-            style="margin-left: -30px"
-          />
+          <img src="../assets/blinkist.png" style="margin-left: -30px" />
         </div>
         <div class="flex items-start mt-8">
           <div>
@@ -228,15 +220,13 @@
             </svg>
           </div>
           <p class="sm:text-2xl text-xl leading-7 text-gray-600 pl-2.5">
-            Perfect for curious people who love to learn, busy people who don’t have time to read, and even people who aren’t into reading.
+            Perfect for curious people who love to learn, busy people who don’t
+            have time to read, and even people who aren’t into reading.
           </p>
         </div>
         <div class="flex items-center pl-8 mt-10">
           <div class="w-8 h-8">
-            <img
-              src="../../public/blinkist-logo.webp"
-              class="w-full h-full"
-            />
+            <img src="../../public/blinkist-logo.webp" class="w-full h-full" />
           </div>
           <div class="ml-2">
             <p class="text-sm font-medium leading-none text-gray-800">
@@ -258,10 +248,10 @@
 export default {
   data() {
     return {
-      show: true
-    }
-  }
-}
+      show: true,
+    };
+  },
+};
 </script>
 
 <style scoped></style>
