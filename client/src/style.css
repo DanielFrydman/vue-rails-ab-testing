@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.blinklist-text-color {
+  color: #03314B;
+}
