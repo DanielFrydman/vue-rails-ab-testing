@@ -3,7 +3,7 @@ import ApiClient from "./api/axios.js";
 import Router from "./router/index.js";
 import App from "./App.vue";
 
-import { trackPageview, trackEvent } from "./analytics-api.js";
+import { trackPageView, trackEvent } from "./analytics-api.js";
 import { createApp } from "vue";
 
 import "./style.css";
@@ -13,7 +13,7 @@ app.mixin({
   beforeCreate() {
     this.$cmsClient = HygraphClient;
     this.$apiClient = ApiClient();
-    this.$trackPageview = trackPageview;
+    this.$trackPageView = trackPageView;
     this.$trackEvent = trackEvent;
   },
 });
