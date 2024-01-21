@@ -59,7 +59,7 @@ export default {
 
       return 'testVariationText';
     },
-    async fetchDataFromLocalStorage() {
+    fetchDataFromLocalStorage() {
       const storedData = localStorage.getItem('textVariation');
       if (storedData) { return this.setTextVariation(storedData); };
     },
@@ -77,6 +77,7 @@ export default {
         `
         const data = await this.$cmsClient.request(query);
         this.setTextVariation(data.abTestingVariations[0]);
+        this.$trackPageview();
       } catch (e) {
         this.error = `Error trying to fetch data: ${e}. Please, try again later.`;
       }
@@ -93,7 +94,7 @@ export default {
       this.setLocalStorage();
     },
     setLocalStorage() {
-      return localStorage.setItem('textVariation', this.textVariation);
+      localStorage.setItem('textVariation', this.textVariation);
     },
   },
 };
