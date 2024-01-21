@@ -11,6 +11,7 @@ RSpec.describe(V1::TrackPageViewController, type: :controller) do
         displayed_text_variation: 'A random text variation.'
       }
     end
+
     subject { post(:create, params:) }
 
     context 'when everything goes well' do
