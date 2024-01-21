@@ -120,32 +120,32 @@
           Dont have account?
         </p>
         <div>
-          <label
-            for="email"
+          <div
             class="text-sm font-medium leading-none text-gray-800"
           >
             Email
-          </label>
+          </div>
           <input
             id="email"
             aria-labelledby="email"
             type="email"
             class="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 py-3 w-full pl-3 mt-2"
-            placeholder="e.g: john@gmail.com "
+            placeholder="e.g: john@gmail.com"
+            autocomplete="on"
           />
         </div>
         <div class="mt-6 w-full">
-          <label
-            for="pass"
+          <div
             class="text-sm font-medium leading-none text-gray-800"
           >
             Password
-          </label>
+          </div>
           <div class="relative flex items-center justify-center">
             <input
               id="myInput"
               :type="show ? 'password' : 'text'"
               class="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
+              autocomplete="on"
             />
             <div class="absolute right-0 mt-2 mr-3 cursor-pointer">
               <div id="show" @click="show = false" v-if="show">
