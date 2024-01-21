@@ -1,16 +1,16 @@
 import ApiClient from "./api/axios.js";
 
-export const trackPageview = async (params) => {
+export const trackPageview = (params) => {
   try {
-    await ApiClient().post("/track_pageview", params);
+    ApiClient().post("/track_pageview", params);
   } catch (error) {
     console.log(error);
   }
 };
-
-export const trackEvent = async (params) => {
+  
+export const trackEvent = (params) => {
   try {
-    await ApiClient().post("/track_event", params);
+    ApiClient().post("/track_event", params);
   } catch (error) {
     console.log(error);
   }
