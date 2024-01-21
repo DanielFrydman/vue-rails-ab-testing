@@ -108,7 +108,7 @@ export default {
     trackPageView() {
       const params = {
         user_id: this.getUserId(),
-        page: "home",
+        url: window.location.href,
         displayed_text_variation: this.textVariation
       }
 
@@ -117,8 +117,8 @@ export default {
     trackEvent() {
       const params = {
         user_id: this.getUserId(),
-        page: "home",
-        action: "sign_up",
+        event_name: "sign_up",
+        url: window.location.href,
         displayed_text_variation: this.textVariation
       }
 
