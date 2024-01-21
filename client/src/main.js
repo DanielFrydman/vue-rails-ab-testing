@@ -1,19 +1,19 @@
-import { trackPageview, trackEvent } from "./analytics-api.js";
-import { GraphQLClient } from 'graphql-request';
-import { createApp } from 'vue';
-import router from './router/index.js';
-import App from './App.vue';
-import './style.css';
+import HygraphClient from "./plugins/hygraph.js";
+import ApiClient from "./api/axios.js";
+import Router from "./router/index.js";
+import App from "./App.vue";
 
-const hygraphClient = new GraphQLClient(
-  'https://api-sa-east-1.hygraph.com/v2/clrm4asx40h9y01w3qaztpy5a/master'
-);
+import { trackPageview, trackEvent } from "./analytics-api.js";
+import { createApp } from "vue";
+
+import "./style.css";
 
 const app = createApp(App)
 app.mixin({
   beforeCreate() {
-    this.$hygraph = hygraphClient;
+    this.$hygraph = HygraphClient;
+    this.$apiClient = ApiClient;
   },
 });
-app.use(router)
+app.use(Router)
 app.mount('#app')
