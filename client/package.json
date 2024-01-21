@@ -12,6 +12,7 @@
     "graphql": "^16.8.1",
     "graphql-request": "^6.1.0",
     "vue": "^3.3.11",
+    "vue-axios": "^3.5.2",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
