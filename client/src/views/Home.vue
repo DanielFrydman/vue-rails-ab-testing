@@ -34,7 +34,7 @@
 
 <script>
 import { gql } from "graphql-request";
-import Loading from '../components/Loading.vue';
+import Loading from "../components/Loading.vue";
 
 export default {
   data() {
@@ -46,21 +46,23 @@ export default {
   created() {
     this.fetchDataFromLocalStorage();
     this.fetchDataFromCMS();
+    this.trackPageView();
   },
   components: {
     Loading
   },
   methods: {
     signUp() {
+      this.trackEvent();
       this.$router.push("/signUp");
     },
     chooseRandomTextVariant() {
-      if (Math.random() < 0.5) { return 'controlVariationText'; };
+      if (Math.random() < 0.5) { return "controlVariationText"; };
 
-      return 'testVariationText';
+      return "testVariationText";
     },
     fetchDataFromLocalStorage() {
-      const storedData = localStorage.getItem('textVariation');
+      const storedData = localStorage.getItem("textVariation");
       if (storedData) { return this.setTextVariation(storedData); };
     },
     async fetchDataFromCMS() {
@@ -77,13 +79,12 @@ export default {
         `
         const data = await this.$cmsClient.request(query);
         this.setTextVariation(data.abTestingVariations[0]);
-        this.$trackPageview();
       } catch (e) {
         this.error = `Error trying to fetch data: ${e}. Please, try again later.`;
       }
     },
     setTextVariation(textVariation) {
-      if (typeof(textVariation) === 'object') {
+      if (typeof(textVariation) === "object") {
         const randomTextVariant = this.chooseRandomTextVariant();
         this.textVariation = textVariation[randomTextVariant];
         this.setLocalStorage();
@@ -94,8 +95,35 @@ export default {
       this.setLocalStorage();
     },
     setLocalStorage() {
-      localStorage.setItem('textVariation', this.textVariation);
+      localStorage.setItem("textVariation", this.textVariation);
     },
+    getUserId() {
+      let userIdFromLocalStorage = localStorage.getItem("userId");
+      if (userIdFromLocalStorage) { return userIdFromLocalStorage; };
+
+      let userId = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+      localStorage.setItem("userId", userId);
+      return userId;
+    },
+    trackPageView() {
+      const params = {
+        user_id: this.getUserId(),
+        page: "home",
+        displayed_text_variation: this.textVariation
+      }
+
+      this.$trackPageView(params);
+    },
+    trackEvent() {
+      const params = {
+        user_id: this.getUserId(),
+        page: "home",
+        action: "sign_up",
+        displayed_text_variation: this.textVariation
+      }
+
+      this.$trackEvent(params);
+    }
   },
 };
 </script>
