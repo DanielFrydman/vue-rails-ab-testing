@@ -12,5 +12,6 @@ Rails.application.routes.draw do
 
   namespace :v1 do
     post '/track_page_view', to: 'track_page_view#create'
+    post '/track_event', to: 'track_event#create'
   end
 end
