@@ -226,7 +226,7 @@
         </div>
         <div class="flex items-center pl-8 mt-10">
           <div class="w-8 h-8">
-            <img src="../../public/blinkist-logo.webp" class="w-full h-full" />
+            <img src="../assets/blinkist-logo.webp" class="w-full h-full" />
           </div>
           <div class="ml-2">
             <p class="text-sm font-medium leading-none text-gray-800">
