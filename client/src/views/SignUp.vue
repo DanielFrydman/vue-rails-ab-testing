@@ -1,4 +1,5 @@
 <template>
+  <Navbar />
   <div class="bg-indigo-50">
     <div
       class="xl:px-20 md:px-10 sm:px-6 px-4 md:py-12 py-9 2xl:mx-auto 2xl:container md:flex items-center justify-center"
@@ -245,11 +246,16 @@
 </template>
 
 <script>
+import Navbar from "../components/Navbar.vue";
+
 export default {
   data() {
     return {
       show: true,
     };
+  },
+  components: {
+    Navbar,
   },
 };
 </script>
