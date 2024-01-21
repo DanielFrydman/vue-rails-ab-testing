@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { Home, SignUp } from '../views/index'
+import { Home, SignUp, TrackingDashboard } from '../views/index'
 
 const routes = [
   {
@@ -11,6 +11,11 @@ const routes = [
     path: '/signUp',
     name: 'Sign Up',
     component: SignUp
+  },
+  {
+    path: '/trackingDashboard',
+    name: 'Tracking Dashboard',
+    component: TrackingDashboard
   },
 ];
 
