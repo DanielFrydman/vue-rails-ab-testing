@@ -15,3 +15,11 @@ export const trackEvent = (params) => {
     console.log(error);
   }
 };
+
+export const trackingDashboard = (params) => {
+  try {
+    ApiClient().post("/tracking_dashboard", params);
+  } catch (error) {
+    console.log(error);
+  }
+};
