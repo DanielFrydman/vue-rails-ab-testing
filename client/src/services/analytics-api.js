@@ -1,4 +1,4 @@
-import ApiClient from "./api/axios.js";
+import ApiClient from "../api/axios.js";
 
 export const trackPageView = (params) => {
   try {
