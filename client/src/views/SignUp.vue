@@ -246,7 +246,7 @@
 </template>
 
 <script>
-import Navbar from "../components/Navbar.vue";
+import { Navbar } from '../components/index'
 
 export default {
   data() {

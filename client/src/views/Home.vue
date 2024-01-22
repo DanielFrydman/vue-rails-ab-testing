@@ -46,8 +46,7 @@
 
 <script>
 import { gql } from "graphql-request";
-import Loading from "../components/Loading.vue";
-import Navbar from "../components/Navbar.vue";
+import { Loading, Navbar } from '../components/index'
 
 export default {
   data() {
