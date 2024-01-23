@@ -58,7 +58,6 @@ export default {
   created() {
     this.fetchDataFromLocalStorage();
     this.fetchDataFromCMS();
-    this.trackPageView();
   },
   components: {
     Loading,
@@ -84,6 +83,7 @@ export default {
     },
     async fetchDataFromCMS() {
       if (this.textVariation) {
+        this.trackPageView();
         return;
       }
 
@@ -98,6 +98,7 @@ export default {
         `;
         const data = await this.$cmsClient.request(query);
         this.setTextVariation(data.abTestingVariations[0]);
+        this.trackPageView();
       } catch (e) {
         this.error = `Error trying to fetch data: ${e}. Please, try again later.`;
       }
