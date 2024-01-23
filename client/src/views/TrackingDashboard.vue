@@ -1,7 +1,7 @@
 <template>
   <Navbar />
 
-  <div v-if="!pageViewsChartData && !eventsChartData && !ctrChartData" class="flex justify-center mt-7">
+  <div v-if="!chartsLoaded" class="flex justify-center mt-7">
     <div class="blinklist-background-color p-7 shadow-md rounded-md">
       <div class="bg-white rounded shadow-lg">
         <form @submit.prevent="checkForm">
@@ -44,17 +44,34 @@
     </div>
   </div>
 
-  <div v-else class="flex items-center flex-col mt-5">
-    <div class="w-1/2 mb-10">
-      <Bar :data="pageViewsChartData" :options="pageViewsChartOptions" />
+  <div v-else>
+    <div class="py-4 flex justify-evenly">
+      <div class="w-1/3">
+        <div class="mb-10">
+          <Bar :data="uniquePageViewsChart.data" :options="uniquePageViewsChart.chart_options" />
+        </div>
+        <div class="mb-10">
+          <Bar :data="uniqueEventsChart.data" :options="uniqueEventsChart.chart_options" />
+        </div>
+        <div class="">
+          <Bar :data="uniqueCtrChart.data" :options="uniqueCtrChart.chart_options" />
+        </div>
+      </div>
+
+      <div class="w-1/3">
+        <div class="mb-10">
+          <Bar :data="totalPageViewsChart.data" :options="totalPageViewsChart.chart_options" />
+        </div>
+        <div class="mb-10">
+          <Bar :data="totalEventsChart.data" :options="totalEventsChart.chart_options" />
+        </div>
+        <div class="mb-10">
+          <Bar :data="totalCtrChart.data" :options="totalCtrChart.chart_options" />
+        </div>
+      </div>
     </div>
-    <div class="w-1/2 mb-10">
-      <Bar :data="eventsChartData" :options="eventsChartOptions" />
-    </div>
-    <div class="w-1/2 mb-10">
-      <Bar :data="ctrChartData" :options="ctrChartOptions" />
-    </div>
-    <div>
+
+    <div class="py-4 flex justify-center">
       <button @click="reloadPage"
         class="blinklist-background-color bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         Reload Page
@@ -87,13 +104,14 @@ export default {
       startDate: null,
       endDate: null,
       errors: [],
-      pageViewsChartData: null,
-      pageViewsChartOptions: null,
-      eventsChartData: null,
-      eventsChartOptions: null,
-      ctrChartData: null,
-      ctrChartOptions: null,
+      uniqueEventsChart: { data: null, chart_options: null },
+      uniquePageViewsChart: { data: null, chart_options: null },
+      uniqueCtrChart: { data: null, chart_options: null },
+      totalEventsChart: { data: null, chart_options: null },
+      totalPageViewsChart: { data: null, chart_options: null },
+      totalCtrChart: { data: null, chart_options: null },
       selectedEventName: null,
+      chartsLoaded: false
     };
   },
   created() {
@@ -110,13 +128,21 @@ export default {
           end_date: this.endDate,
           event_name: this.selectedEventName
         };
-        const { data: { page_views_chart, events_chart, ctr_chart } } = await this.$trackingDashboard(params);
-        this.pageViewsChartData = page_views_chart.data;
-        this.pageViewsChartOptions = page_views_chart.chart_options;
-        this.eventsChartData = events_chart.data;
-        this.eventsChartOptions = events_chart.chart_options;
-        this.ctrChartData = ctr_chart.data;
-        this.ctrChartOptions = ctr_chart.chart_options;
+        const {
+          unique_events_chart,
+          unique_page_views_chart,
+          unique_ctr_chart,
+          total_events_chart,
+          total_page_views_chart,
+          total_ctr_chart
+        } = await this.$trackingDashboard(params);
+        this.uniqueEventsChart = unique_events_chart;
+        this.uniquePageViewsChart = unique_page_views_chart;
+        this.uniqueCtrChart = unique_ctr_chart;
+        this.totalEventsChart = total_events_chart;
+        this.totalPageViewsChart = total_page_views_chart;
+        this.totalCtrChart = total_ctr_chart;
+        this.chartsLoaded = true;
       } catch (e) {
         console.log(e)
       }
@@ -138,9 +164,7 @@ export default {
     },
     async retrieve_event_names() {
       try {
-        const {
-          data: { event_names },
-        } = await this.$apiClient.get("/list_event_names");
+        const { data: { event_names } } = await this.$apiClient.get("/list_event_names");
         this.eventNames = event_names;
       } catch (e) {
         console.log(e);
@@ -149,3 +173,5 @@ export default {
   },
 };
 </script>
+
+<style scoped></style>
