@@ -12,13 +12,13 @@ module V1
 
       render json: { page_views_chart:, events_chart:, ctr_chart: }, status: :ok
     rescue StandardError => e
-      render json: { message: "An error occured: #{e}." }, status: :internal_server_error
+      render json: { message: "An error occurred: #{e}." }, status: :internal_server_error
     end
 
     def list_event_names
       render json: { event_names: Event.pluck(:event_name).uniq }, status: :ok
     rescue StandardError => e
-      render json: { message: "An error occured: #{e}." }, status: :internal_server_error
+      render json: { message: "An error occurred: #{e}." }, status: :internal_server_error
     end
 
     private

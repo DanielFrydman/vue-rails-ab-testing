@@ -45,7 +45,7 @@ RSpec.describe(V1::TrackEventController, type: :controller) do
         subject
         response_body = JSON.parse(response.body)
         expect(response_body['message']).to(
-          eq('An error occured: param is missing or the value is empty: user_id.')
+          eq('An error occurred: param is missing or the value is empty: user_id.')
         )
       end
 

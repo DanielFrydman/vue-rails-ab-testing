@@ -7,7 +7,7 @@ module V1
 
       render json: { message: 'Page view tracked.' }, status: :created
     rescue StandardError => e
-      render json: { message: "An error occured: #{e}." }, status: :internal_server_error
+      render json: { message: "An error occurred: #{e}." }, status: :internal_server_error
     end
 
     private
