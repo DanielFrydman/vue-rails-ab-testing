@@ -26,9 +26,13 @@ RSpec.describe(V1::TrackingDashboardController, type: :controller) do
       it 'returns data' do
         subject
         response_body = JSON.parse(response.body)
-        expect(response_body).to(have_key('page_views_chart'))
-        expect(response_body).to(have_key('events_chart'))
-        expect(response_body).to(have_key('ctr_chart'))
+        expect(response_body).to(have_key('charts'))
+        expect(response_body['charts']).to(have_key('total_ctr_chart'))
+        expect(response_body['charts']).to(have_key('unique_ctr_chart'))
+        expect(response_body['charts']).to(have_key('total_page_views_chart'))
+        expect(response_body['charts']).to(have_key('unique_page_views_chart'))
+        expect(response_body['charts']).to(have_key('total_events_chart'))
+        expect(response_body['charts']).to(have_key('unique_events_chart'))
       end
 
       it 'returns 200' do

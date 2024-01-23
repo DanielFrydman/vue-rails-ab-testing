@@ -10,9 +10,10 @@ RSpec.describe(EventsBarChartPresenter, type: :presenter) do
         'Variation text' => 2
       }
     end
-    let(:event_name) { 'sign_up' }
+    let(:title) { 'Random title' }
+    let(:subtitle) { 'Random subtitle' }
 
-    subject { described_class.new(hash:, event_name:) }
+    subject { described_class.new(hash:, title:, subtitle:) }
 
     it 'returns the chart data in a hash' do
       expect(subject.chart_data).to(
@@ -37,11 +38,11 @@ RSpec.describe(EventsBarChartPresenter, type: :presenter) do
                 },
                 title: {
                   display: true,
-                  text: 'Sign up Chart'
+                  text: 'Random title'
                 },
                 subtitle: {
                   display: true,
-                  text: 'Unique Sign up events per user by text variation in period',
+                  text: 'Random subtitle',
                   color: '#092F54',
                   font: {
                     size: 12,

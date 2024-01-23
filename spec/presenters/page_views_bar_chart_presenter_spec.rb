@@ -10,8 +10,10 @@ RSpec.describe(PageViewsBarChartPresenter, type: :presenter) do
         'Variation text' => 2
       }
     end
+    let(:title) { 'Random title' }
+    let(:subtitle) { 'Random subtitle' }
 
-    subject { described_class.new(hash) }
+    subject { described_class.new(hash:, title:, subtitle:) }
 
     it 'returns the chart data in a hash' do
       expect(subject.chart_data).to(
@@ -36,11 +38,11 @@ RSpec.describe(PageViewsBarChartPresenter, type: :presenter) do
                 },
                 title: {
                   display: true,
-                  text: 'Page Views Chart'
+                  text: 'Random title'
                 },
                 subtitle: {
                   display: true,
-                  text: 'Unique page views per user by text variation in period',
+                  text: 'Random subtitle',
                   color: '#092F54',
                   font: {
                     size: 12,

@@ -4,20 +4,22 @@ require 'rails_helper'
 
 RSpec.describe(ClickthroughRateBarChartPresenter, type: :presenter) do
   describe '#chart_data' do
-    let(:total_uniq_page_views) do
+    let(:total_page_views) do
       {
         'Control text' => 2,
         'Variation text' => 1
       }
     end
-    let(:total_uniq_events) do
+    let(:total_events) do
       {
         'Control text' => 1,
         'Variation text' => 1
       }
     end
+    let(:title) { 'Random title' }
+    let(:subtitle) { 'Random subtitle' }
 
-    subject { described_class.new(total_uniq_page_views:, total_uniq_events:) }
+    subject { described_class.new(total_page_views:, total_events:, title:, subtitle:) }
 
     it 'returns the chart data in a hash' do
       expect(subject.chart_data).to(
@@ -42,11 +44,11 @@ RSpec.describe(ClickthroughRateBarChartPresenter, type: :presenter) do
                 },
                 title: {
                   display: true,
-                  text: 'CTR Chart'
+                  text: 'Random title'
                 },
                 subtitle: {
                   display: true,
-                  text: 'Clickthrough Rate per unique users by text variation in period (%)',
+                  text: 'Random subtitle',
                   color: '#092F54',
                   font: {
                     size: 12,

@@ -3,11 +3,14 @@
 require 'rails_helper'
 
 RSpec.describe(Event, type: :model) do
+  let(:yesterday) { Time.zone.yesterday.to_s }
+  let(:tomorrow) { Time.zone.tomorrow.to_s }
+
   describe '#in_period' do
     let!(:event) { create(:event) }
 
     it 'return events in period' do
-      elements = Event.in_period(Time.zone.yesterday, Time.zone.tomorrow)
+      elements = Event.in_period(yesterday, tomorrow)
       expect(elements.count).to(eq(1))
       expect(elements.last).to(eq(event))
     end
@@ -23,20 +26,24 @@ RSpec.describe(Event, type: :model) do
     end
   end
 
-  describe '#total_uniq_events_in_period_by_displayed_text_variation_and_action' do
+  describe '#in_period_by_displayed_text_variation_and_action' do
     let!(:event) do
-      create(:event, displayed_text_variation: 'Random text.')
+      create(:event, displayed_text_variation: 'Random text.', url: 'https://fake-url.com')
     end
 
-    it 'return total uniq events in period by text variation and action' do
-      hash = Event.total_uniq_events_in_period_by_displayed_text_variation_and_action(
+    it 'return a hash with total, unique and url' do
+      hash = Event.in_period_by_displayed_text_variation_and_action(
         event_name: 'sign_up',
-        start_date: Time.zone.yesterday,
-        end_date: Time.zone.tomorrow
+        start_date: yesterday,
+        end_date: tomorrow
       )
       expect(hash).to(
         eq(
-          { 'Random text.' => 1 }
+          {
+            total: { 'Random text.' => 1 },
+            unique: { 'Random text.' => 1 },
+            url: 'https://fake-url.com'
+          }
         )
       )
     end
