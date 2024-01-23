@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe PageView, type: :model do
+RSpec.describe(PageView, type: :model) do
   describe '#in_period' do
     let!(:page_view) { create(:page_view) }
 

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Event, type: :model do
+RSpec.describe(Event, type: :model) do
   describe '#in_period' do
     let!(:event) { create(:event) }
 

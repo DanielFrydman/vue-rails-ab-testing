@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe ClickthroughRateBarChartPresenter, type: :presenter do
+RSpec.describe(ClickthroughRateBarChartPresenter, type: :presenter) do
   describe '#chart_data' do
     let(:total_uniq_page_views) do
       {

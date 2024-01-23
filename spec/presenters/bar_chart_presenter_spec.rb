@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe BarChartPresenter, type: :presenter do
+RSpec.describe(BarChartPresenter, type: :presenter) do
   describe '#chart_data' do
     let(:hash) do
       {
