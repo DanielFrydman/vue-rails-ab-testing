@@ -9,7 +9,7 @@ Its goal is to assist the non-technical user to modify AB Testing and monitor th
 - Track a pageview via the `analytics-api.js` method when a visitor lands on the page.
 - Track an event via the `analytics-api.js` method when a visitor clicks on the “Sign up” button.
 - Every single page view and click shall be tracked.
-- Calculate CTR by unique users.
+- Calculate CTR by unique users and event name.
 - Tracking Dashboard to see unique page views and events per user by event name and in chosen period
 - Allow non-technical users to modify the control variation or the test variation texts in Hygraph CMS (Content management system).
 - P.S.: The sign up page is for viewing only, it doesn't work like a real page
@@ -47,11 +47,14 @@ Its goal is to assist the non-technical user to modify AB Testing and monitor th
 - `flowbite`: Added to have an utility-first CSS framework for rapid Vue.js interface development(in this case, I just used a datepicker).
 
 ## :roller_coaster: Results
+to do
 
 ## :pushpin: Information
 You can test the application in the following URL: **url-here**.
 <br>
 The PostgreSQL DB in Render will be erased after 90 days.
+<br>
+***Please be aware that the link may be inactive, depending on when you access my repository, as the Render database associated with the free version could potentially have expired. Thank you for your understanding.***
 
 ## 📁 Access to the project
 ```shell
