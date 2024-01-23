@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 class EventsBarChartPresenter < BarChartPresenter
-  def initialize(hash:, event_name:)
-    formatted_event_name = event_name.gsub('_', ' ').capitalize
-
+  def initialize(hash:, title:, subtitle:)
     super(
       hash:,
-      chart_title: "#{formatted_event_name} Chart",
-      chart_subtitle: "Unique #{formatted_event_name} events per user by text variation in period"
+      chart_title: title,
+      chart_subtitle: subtitle
     )
   end
 end

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class PageViewsBarChartPresenter < BarChartPresenter
-  def initialize(hash)
+  def initialize(hash:, title:, subtitle:)
     super(
       hash:,
-      chart_title: 'Page Views Chart',
-      chart_subtitle: 'Unique page views per user by text variation in period'
+      chart_title: title,
+      chart_subtitle: subtitle
     )
   end
 end

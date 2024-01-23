@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class BarChartPresenter
-  def initialize(hash:, chart_title:, chart_subtitle:)
+  def initialize(chart_title:, chart_subtitle:, hash: {})
     @labels = hash.keys
     @values = hash.values
     @chart_title = chart_title
