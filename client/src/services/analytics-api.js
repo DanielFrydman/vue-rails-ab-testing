@@ -16,9 +16,9 @@ export const trackEvent = (params) => {
   }
 };
 
-export const trackingDashboard = (params) => {
+export const trackingDashboard = async (params) => {
   try {
-    ApiClient().post("/tracking_dashboard", params);
+    return await ApiClient().get("/tracking_dashboard", { params });
   } catch (error) {
     console.log(error);
   }
