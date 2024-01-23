@@ -18,7 +18,8 @@ export const trackEvent = (params) => {
 
 export const trackingDashboard = async (params) => {
   try {
-    return await ApiClient().get("/tracking_dashboard", { params });
+    const { data: { charts } } = await ApiClient().get("/tracking_dashboard", { params });
+    return charts;
   } catch (error) {
     console.log(error);
   }
