@@ -245,7 +245,7 @@
   </div>
 </template>
 
-<script>
+<script scoped>
 import { Navbar } from '../components/index'
 
 export default {

@@ -80,7 +80,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script scoped>
 import {
   Chart as ChartJS,
   Title,
@@ -114,12 +114,12 @@ export default {
       chartsLoaded: false
     };
   },
-  created() {
+  mounted() {
     this.retrieve_event_names();
   },
   methods: {
     reloadPage() {
-      window.location.reload();
+      this.$router.go("/trackingDashboard");
     },
     async trackingDashboard() {
       try {
