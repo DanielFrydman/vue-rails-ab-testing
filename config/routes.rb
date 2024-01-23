@@ -13,5 +13,7 @@ Rails.application.routes.draw do
   namespace :v1 do
     post '/track_page_view', to: 'track_page_view#create'
     post '/track_event', to: 'track_event#create'
+    get '/tracking_dashboard', to: 'tracking_dashboard#index'
+    get '/list_event_names', to: 'tracking_dashboard#list_event_names'
   end
 end
