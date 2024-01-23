@@ -3,7 +3,7 @@ import ApiClient from "./api/axios.js";
 import Router from "./router/index.js";
 import App from "./App.vue";
 
-import { trackPageView, trackEvent } from "./services/analytics-api.js";
+import { trackPageView, trackEvent, trackingDashboard } from "./services/analytics-api.js";
 import { createApp } from "vue";
 
 import "./style.css";
@@ -15,6 +15,7 @@ app.mixin({
     this.$apiClient = ApiClient();
     this.$trackPageView = trackPageView;
     this.$trackEvent = trackEvent;
+    this.$trackingDashboard = trackingDashboard;
   },
 });
 app.use(Router)
