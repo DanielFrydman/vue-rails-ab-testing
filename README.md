@@ -75,7 +75,7 @@ The current content is the one below:
 git@github.com:DanielFrydman/vue-rails-ab-testing.git
 ```
 
-## 🐳 Run the project with Docker
+## 🐳 Run the project
 - In order to run the project you must: 
 ```shell
 cd vue-rails-ab-testing
@@ -106,3 +106,17 @@ npm dev run
 ```
 The backend will be running at **http://localhost:3000** and the frontend will be running at **http://localhost:5173**, but you only need to open the frontend link since the backend is Rails API-only.
 
+## :books: Higher-level thoughts and Considerations
+In developing this project, my aim was to explore Content Management Systems (CMS) and delve into the implementation of AB Testing with Hygraph. I meticulously tracked every page view and click on the signup button. The goal was to offer an easy way for anyone testing my system to comprehend the total and unique page views and clicks the website received. The tracking dashboard also displayed a Click-Through Rate (CTR) calculated with both total and unique data.
+
+To calculate the CTR, I used two models. One for counting page views and another for counting events. To create charts for both total and unique data, I implemented a method in each model. This method returned the fetched data in a hash format, containing both total and unique data and this approach prevented unnecessary queries. The responsibility of calculating the CTR fell on presenters, which I used to generate data for the charts on the front end.
+
+I thoroughly enjoy learning about Hygraph's CDN caching capabilities. Understanding how it strategically distributes and caches static assets across global servers has been not only enlightening but also invaluable in optimizing content delivery. This knowledge not only enhances the efficiency of the platform but also contributes significantly to my overall understanding of web development best practices.
+
+## :microscope: Assumptions
+Since the challenge did not explicitly require displaying all this information, I decided to go beyond the basics. I implemented a tracking dashboard, enhancing my understanding of chartjs and presenting a better way to gather backend data using the presenter pattern, an approach I hadn't used or created before. I assumed that this dashboard would prove useful when comparing the CTRs of the control and test texts and it offers an efficient way to verify that tracking all data works.
+
+## :door: Limitations
+This project allows only two texts to be changed in Hygraph for AB testing. If a third option (ABC) is desired, a refactor is necessary. Additionally, adding more AB tests on other pages might be better addressed by creating another schema in the project or a similar approach, along with updating/creating the GraphQL queries to fetch the data.
+
+The main limitation lies in the lack of dynamism and ease when attempting to conduct more AB tests. The need to modify code and add components to the Hygraph project makes the process neither dynamic nor straightforward. Unfortunately, I didn't explore a solution for this challenge due to my lack of experience with this type of project.
