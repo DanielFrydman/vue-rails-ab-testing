@@ -16,4 +16,6 @@ Rails.application.routes.draw do
     get '/tracking_dashboard', to: 'tracking_dashboard#index'
     get '/list_event_names', to: 'tracking_dashboard#list_event_names'
   end
+
+  get '*path', to: 'fallback#index', constraints: ->(req) { !req.xhr? && req.format.html? }
 end
