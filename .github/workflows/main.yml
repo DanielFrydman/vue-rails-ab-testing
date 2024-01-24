@@ -38,8 +38,8 @@ jobs:
         working-directory: ${{ github.workspace }}
         run: bin/rails db:create db:migrate db:schema:load
 
-      - name: Run tests
-        run: bundle exec rspec
-
       - name: Run linter
         run: bundle exec rubocop
+
+      - name: Run tests
+        run: bundle exec rspec
