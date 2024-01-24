@@ -156,7 +156,7 @@ export default {
       if (!this.selectedEventName) {
         this.errors.push('The event name is mandatory');
       }
-      if (!this.startDate && !this.endDate) {
+      if (!this.startDate || !this.endDate) {
         this.errors.push('The date rage is mandatory');
       }
 
