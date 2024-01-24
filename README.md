@@ -76,4 +76,33 @@ git@github.com:DanielFrydman/vue-rails-ab-testing.git
 ```
 
 ## 🐳 Run the project with Docker
-to do
+- In order to run the project you must: 
+```shell
+cd vue-rails-ab-testing
+```
+- Into the vue-rails-ab-testing folder, you'll find the docker-compose.yml. To start the Postgresql, run:
+```shell
+docker compose up -d
+```
+- Now we need to create the database and run the migrations:
+```shell
+rails db:create db:migrate
+```
+- You can start the server by running:
+```shell
+rails server
+```
+- To start the frontend, open another terminal and enter the client folder:
+```shell
+cd client
+```
+- Then install the dependencies with:
+```shell
+npm install
+```
+- Now, you can start the server by typing:
+```shell
+npm dev run
+```
+The backend will be running at **http://localhost:3000** and the frontend will be running at **http://localhost:5173**, but you only need to open the frontend link since the backend is Rails API-only.
+
